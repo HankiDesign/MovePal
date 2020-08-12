@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HSLMapApp.Views.SettingsPage" xmlns:vm="clr-namespace:HSLMapApp.ViewModels" xmlns:local="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Mapbox.Forms" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Padding="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Vertical">
+                <Label FontAttributes="Bold" FontSize="16" Text="Origin address: " />
+                <Label FontSize="16" Text="{Binding Address}" />
+
+                <Label FontAttributes="Bold" FontSize="16" Text="Latitude: " />
+                <Label FontSize="16" Text="{Binding Lat}" />
+
+                <Label FontAttributes="Bold" FontSize="16" Text="Longitude: " />
+                <Label FontSize="16" Text="{Binding Lon}" />
+
+                <Label FontAttributes="Bold" FontSize="16" Text="Maximum travel time (minutes): " />
+            <StackLayout Orientation="Horizontal">
+            <Slider Maximum="90" Minimum="1" Value="{Binding MaxTravelTime}" HorizontalOptions="FillAndExpand"/>
+                <Label FontSize="16" Text="{Binding MaxTravelTime}" />
+                </StackLayout>
+
+                <Label FontAttributes="Bold" FontSize="16" Text="Search step radius (metres): " />
+            <StackLayout Orientation="Horizontal">
+                <Slider Maximum="5000" Minimum="200" Value="{Binding SearchStepRadius}" HorizontalOptions="FillAndExpand"/>
+                <Label FontSize="16" Text="{Binding SearchStepRadius}" />
+                </StackLayout>
+
+                <Label FontAttributes="Bold" FontSize="16" Text="Search steps: " />
+                <Picker x:Name="picker"
+                    Title="Search steps"
+                        SelectedItem="{Binding SearchStepCount}"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding SearchStepsList}">
+                </Picker>
+
+            <Label FontAttributes="Bold" FontSize="16" Text="Point count: " />
+                <Picker x:Name="pointCountPicker"
+                    Title="Point count"
+                        SelectedItem="{Binding PointCount, Mode=TwoWay}"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding RadiusPointsList}">
+                </Picker>
+            </StackLayout>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="1"
+                Text="Continue"
+                BackgroundColor="#1d3d7d"
+                Opacity="0.8"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Command="{Binding ContinueCommand}" />
+        </Grid>
+    </Grid>
+</ContentPage>

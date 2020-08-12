@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="HSLMapApp.Views.CalculatePage" xmlns:vm="clr-namespace:HSLMapApp.ViewModels" xmlns:local="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Mapbox.Forms" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:CalculateViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>        
+        <local:MapView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            x:Name="map" 
+            VerticalOptions="FillAndExpand" 
+            ZoomLevel="{Binding ZoomLevel}"
+            Pitch="{Binding Pitch}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="1"
+                Text="Calculate"
+                BackgroundColor="#1d3d7d"
+                Opacity="0.8"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Clicked="Button_Clicked"/>
+        </Grid>        
+        <ProgressBar Grid.Row="0" Progress="{Binding Progress}" ProgressColor="#235cad" BackgroundColor="Transparent" VerticalOptions="Start" Margin="0, -7, 0, 0" />
+    </Grid>
+    
+</ContentPage>

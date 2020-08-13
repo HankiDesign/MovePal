@@ -24,9 +24,9 @@ The project contains an iOS project which is however NOT configured to work yet.
 
 1. Open the .sln file in the root of the project
 2. Register an account on [mapbox.com](https://www.mapbox.com/)
-  - Go to the [Account page](https://account.mapbox.com/)
-  - Create a new access token by clicking the blue *Create a token* button in the *Access tokens* section
-  - Copy the token
+    - Go to the [Account page](https://account.mapbox.com/)
+    - Create a new access token by clicking the blue *Create a token* button in the *Access tokens* section
+    - Copy the token
 3. Open the *strings.xml* file in *HSLMapApp.Android > Resources > values > strings.xml*
 4. Paste the newly created access token to the access token field (to replace the text *Add your own...*
 5. Make sure that the Android project is set as the startup project and that there's a phone connected to the computer with [USB debugging enabled](https://developer.android.com/studio/debug/dev-options)
